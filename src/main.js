@@ -93,7 +93,7 @@ function toStenoGrouped(txt) {
   let lines = txt.split('\n');
   for(let i = 0; i < lines.length; i++) {
     let ln = lines[i].split(' ').slice(2);
-    if(ln[0].indexOf('Translation(') === 0) {
+    if(ln && ln.length > 0 && ln[0].indexOf('Translation(') === 0) {
       let stroke = ln.slice(0, ln.indexOf(':')).map(a => a.slice(1, a.length - 2)).join(' ')
       .replace(/^ranslation\(\('/, '')
       .replace(/'$/,'');
@@ -101,11 +101,27 @@ function toStenoGrouped(txt) {
       ans.push([txt, stroke]);
       continue;
     }
-    if(ln[0].indexOf('*Translation(') === 0) {
+    if(ln && ln.length > 0 && ln[0].indexOf('*Translation(') === 0) {
       ans.pop();
       continue;
     }
   }
+
+  if(ans.length === 0) {
+    errors.innerHTML = `<span class='error'>No translation logs found</span>`;
+    result.innerHTML = '';
+    return;
+  }
+
+  //try {
+  //}
+  //catch(e) {
+  //  errors.innerHTML = `<span class='error'>Invalid logs:</span>`;
+  //  result.innerHTML = nxt.string.slice(Math.max(0, nxt.index - 20), nxt.index + 20) +
+  //  '\n' +
+  //  new Array(Math.min(nxt.index + 1, 21)).fill('').join(' ') + '^';
+  //  return;
+  //}
   return toGrouped(ans);
 }
 
@@ -128,9 +144,12 @@ function update(wait = false) {
   clearTimeout(waitingTimeout);
   waiting = false;
   download.style.display = 'none';
-
   let grouped = toStenoGrouped(txt.value.trim());
 
+  if(!grouped) {
+    return;
+  }
+  
   let groupedWords = [[...grouped[0]]];
   for(let i = 1; i < grouped.length; i++) {
     if(grouped[i][0][0] === ' ' ||
