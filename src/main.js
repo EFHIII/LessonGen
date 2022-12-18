@@ -22,7 +22,11 @@ function toGrouped(textCode) {
   for(let group of textCode) {
     let parsed = parseDictionaryEntry(group[0], state);
 
+    console.log(parsed);
+
     if(parsed.retroCase) {
+      console.log(parsed.retroCase);
+      console.log(txt);
       switch(parsed.retroCase) {
         case Case.CAP_FIRST_WORD:
         case Case.TITLE:
@@ -73,10 +77,13 @@ function toGrouped(textCode) {
         );
     }
 
-    if(txt.length > 0 && parsed.newWord && strokes.length > 0) {
+    if(/^[.,!?:;]$/.test(parsed.appendText) || (txt.length > 0 && parsed.newWord && strokes.length > 0)) {
       ans.push([txt, strokes.join('/')]);
       txt = '';
       strokes = [];
+    }
+    if(txt.length > 0 && txt[txt.length - 1] !== '/' && parsed.appendText[0] !== '/') {
+      txt += '/';
     }
     txt += parsed.appendText;
     state = parsed.state;
@@ -112,6 +119,8 @@ function toStenoGrouped(txt) {
     result.innerHTML = '';
     return;
   }
+
+  console.log(ans.join('\n'));
 
   //try {
   //}
@@ -149,7 +158,7 @@ function update(wait = false) {
   if(!grouped) {
     return;
   }
-  
+
   let groupedWords = [[...grouped[0]]];
   for(let i = 1; i < grouped.length; i++) {
     if(grouped[i][0][0] === ' ' ||
@@ -162,6 +171,8 @@ function update(wait = false) {
       groupedWords[groupedWords.length - 1][1] += '/' + grouped[i][1];
     }
   }
+
+  console.log(groupedWords);
 
   for(let group in groupedWords) {
     if(!groupedWords[group][1].match(/\//g) || groupedWords[group][1].match(/\//g).length === 1) continue;

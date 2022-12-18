@@ -406,6 +406,9 @@ function parseDictionaryEntry(str, oldState = defaultState) {
         if(param[0] === '^' || param.indexOf('^') < 0) {
           state.startAttached = true;
         }
+        if(param[0] === '^') {
+          newWord = false;
+        }
         if(param.replace(/\^/g).length) {
           appendText = appendTextCase(appendText, param.replace(/\^/g,''), state);
           state.startAttached = false;
@@ -422,9 +425,7 @@ function parseDictionaryEntry(str, oldState = defaultState) {
         state.lastStrokeWasGlue = true;
         if(lastWasGlue) {
           state.startAttached = true;
-          if(appendText === '') {
-            newWord = false;
-          }
+          newWord = false;
         }
         appendText = appendTextCase(appendText, param, state);
         state.startAttached = false;
