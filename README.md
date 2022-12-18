@@ -13,3 +13,5 @@ Once you've finished stenoing the lesson, go to the log file and copy its new co
 <https://efhiii.github.io/LessonGen>
 
 Assuming everything worked correctly, you should see a preview of the interpreted logs and a download button to download the lesson file.
+
+ ![LessonGen usage example](/src/app.png)
