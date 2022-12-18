@@ -22,11 +22,7 @@ function toGrouped(textCode) {
   for(let group of textCode) {
     let parsed = parseDictionaryEntry(group[0], state);
 
-    console.log(parsed);
-
     if(parsed.retroCase) {
-      console.log(parsed.retroCase);
-      console.log(txt);
       switch(parsed.retroCase) {
         case Case.CAP_FIRST_WORD:
         case Case.TITLE:
@@ -120,8 +116,6 @@ function toStenoGrouped(txt) {
     return;
   }
 
-  console.log(ans.join('\n'));
-
   //try {
   //}
   //catch(e) {
@@ -131,6 +125,15 @@ function toStenoGrouped(txt) {
   //  new Array(Math.min(nxt.index + 1, 21)).fill('').join(' ') + '^';
   //  return;
   //}
+
+  if(document.getElementById('underlineBriefs').checked) {
+    for(let l in ans) {
+      if(/\w \w/.test(ans[l][0])) {
+        ans[l][0] = `_${ans[l][0]}_`;
+      }
+    }
+  }
+
   return toGrouped(ans);
 }
 
@@ -171,8 +174,6 @@ function update(wait = false) {
       groupedWords[groupedWords.length - 1][1] += '/' + grouped[i][1];
     }
   }
-
-  console.log(groupedWords);
 
   for(let group in groupedWords) {
     if(!groupedWords[group][1].match(/\//g) || groupedWords[group][1].match(/\//g).length === 1) continue;
@@ -231,3 +232,5 @@ function downloadLesson() {
 document.addEventListener('keydown', _ => update(true));
 
 download.addEventListener('click', _ => downloadLesson());
+
+document.getElementById('underlineBriefs').addEventListener('change', update);

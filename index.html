@@ -1,51 +1,57 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <meta name="google" content="notranslate" />
-    <title>LessonsGen</title>
-    <style media="screen">
-      body {
-        background-color: black;
-        color: white;
-        font-family: monospace;
-        text-align: center;
-      }
 
-      textarea {
-        background-color: black;
-        color: white;
-        width: 100%;
-        height: calc(50vh - 3.5em);
-        resize: none;
-        white-space: pre-wrap;
-      }
+<head>
+  <meta charset="utf-8">
+  <meta name="google" content="notranslate" />
+  <title>LessonsGen</title>
+  <style media="screen">
+    body {
+      background-color: black;
+      color: white;
+      font-family: monospace;
+      text-align: center;
+    }
 
-      button {
-        font-size: 2em;
-        color: white;
-        background-color: #333;
-        border: none;
-      }
+    textarea {
+      background-color: black;
+      color: white;
+      width: 100%;
+      height: calc(50vh - 3.5em);
+      resize: none;
+      white-space: pre-wrap;
+    }
 
-      button:hover {
-        background-color: #222;
-        cursor: pointer;
-      }
+    button {
+      font-size: 2em;
+      color: white;
+      background-color: #333;
+      border: none;
+    }
 
-      .error {
-        color: red;
-        text-decoration: italic;
-        font-size: 2em;
-      }
-    </style>
-  </head>
-  <body>
-    <textarea id="txt" placeholder="Plover Log File Contents"></textarea>
-    <div id="errors"></div>
-    <textarea id="txt-result" placeholder="output preview" readonly></textarea>
-    <button id="download" style="display: none">Download</button>
-    <script src="src/text-to-steno.js" type="text/javascript" charset="utf-8"></script>
-    <script src="src/main.js" type="text/javascript" charset="utf-8"></script>
-  </body>
+    button:hover {
+      background-color: #222;
+      cursor: pointer;
+    }
+
+    .error {
+      color: red;
+      text-decoration: italic;
+      font-size: 2em;
+    }
+  </style>
+</head>
+
+<body>
+  <textarea id="txt" placeholder="Plover Log File Contents"></textarea>
+  <div id="errors"></div>
+  <textarea id="txt-result" placeholder="output preview" readonly></textarea>
+  <div style="float: left;text-align: left">
+    <input type="checkbox" name="Underline Briefs" id="underlineBriefs" checked="true">
+    <label for="Underline Briefs">Underline Briefs</label>
+  </div><button id="download" style="display: none">Download</button>
+  <script src="src/text-to-steno.js" type="text/javascript" charset="utf-8"></script>
+  <script src="src/main.js" type="text/javascript" charset="utf-8"></script>
+</body>
+
 </html>
