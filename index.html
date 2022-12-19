@@ -39,16 +39,48 @@
       text-decoration: italic;
       font-size: 2em;
     }
-  </style>
+
+    .error a {
+      color: #f88;
+    }
+
+    #dropZone {
+      position: fixed;
+      width: 100vw;
+      height: 100vh;
+      left: 0;
+      top: 0;
+      background-color: #3688;
+      visibility: hidden;
+      z-index: 100;
+    }
+
+    #dropZoneMessage {
+      border: dashed;
+      margin: 2em;
+      padding: 2em;
+      font-size: 2em;
+      height: calc(100vh - 8em);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #366488;
+    }
+   </style>
 </head>
 
 <body>
+  <div id="dropZone">
+    <div id="dropZoneMessage">
+      <p>Drop your Plover log file here.</p>
+    </div>
+  </div>
   <textarea id="txt" placeholder="Plover Log File Contents"></textarea>
   <div id="errors"></div>
   <textarea id="txt-result" placeholder="output preview" readonly></textarea>
   <div style="float: left;text-align: left">
     <input type="checkbox" name="Underline multi-word Briefs" id="underlineBriefs" checked="true">
-    <label for="Underline multi-word Briefs">Underline multi-word Briefs</label>
+    <label for="Underline multi-word Briefs">Underline multi-word briefs</label>
   </div><button id="download" style="display: none">Download</button>
   <script src="src/text-to-steno.js" type="text/javascript" charset="utf-8"></script>
   <script src="src/main.js" type="text/javascript" charset="utf-8"></script>
