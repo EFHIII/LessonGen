@@ -1,5 +1,5 @@
 # LessonGen
-Generate lessons for StenoMaster from Plover logs.
+Generate lessons for [StenoMaster](https://github.com/EFHIII/StenoMaster) from Plover logs.
 
 To use, first enable logs and `log translations` in Plover's configuration. Also make sure you're saving the log file to an appropriate location on your computer.
 
