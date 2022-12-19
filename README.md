@@ -9,9 +9,11 @@ If you already had logs enabled, you might want to clear its contents so that yo
 
 Once you've done that, Make sure Plover & your dictionaries are enabled and type out in steno the contents you want for the lesson. Feel free to use asterisk to undo strokes like normal.
 
-Once you've finished stenoing the lesson, go to the log file and copy its new contents into this program:
+Once you've finished stenoing the lesson, drag the log file into the webpage:
 <https://efhiii.github.io/LessonGen>
 
-Assuming everything worked correctly, you should see a preview of the interpreted logs and a download button to download the lesson file.
+ ![LessonGen drag example](/src/app.png)
 
- ![LessonGen usage example](/src/app.png)
+You should see a preview of the interpreted logs and a download button to download the lesson file.
+
+ ![LessonGen usage example](/src/drag.png)
