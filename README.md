@@ -12,8 +12,8 @@ Once you've done that, Make sure Plover & your dictionaries are enabled and type
 Once you've finished stenoing the lesson, drag the log file into the webpage:
 <https://efhiii.github.io/LessonGen>
 
- ![LessonGen drag example](/src/app.png)
+ ![LessonGen drag example](/src/drag.png)
 
 You should see a preview of the interpreted logs and a download button to download the lesson file.
 
- ![LessonGen usage example](/src/drag.png)
+ ![LessonGen usage example](/src/app.png)
